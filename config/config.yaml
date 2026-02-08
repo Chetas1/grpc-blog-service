@@ -1,0 +1,7 @@
+GrpcServer:
+  Host: localhost
+  Port: 9090
+  Protocol: tcp
+
+GrpcClient: 
+  ServerAddress: "localhost:9090"
