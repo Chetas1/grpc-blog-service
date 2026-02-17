@@ -2,15 +2,16 @@ syntax = "proto3";
 
 package blog;
 
-option go_package = "github.com/Chetas1/grpc-blog-service/proto";
-
 import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/Chetas1/grpc-blog-service/proto";
 
 service BlogService {
   rpc CreatePost(CreatePostRequest) returns (Post);
   rpc ReadPost(ReadPostRequest) returns (Post);
   rpc UpdatePost(UpdatePostRequest) returns (Post);
   rpc DeletePost(DeletePostRequest) returns (DeletePostResponse);
+  rpc ReadAll(ReadAllRequest) returns (ReadAllResponse);
 }
 
 message Post {
@@ -20,6 +21,12 @@ message Post {
   string author = 4;
   google.protobuf.Timestamp publication_date = 5;
   repeated string tags = 6;
+}
+
+message ReadAllRequest {}
+
+message ReadAllResponse {
+  repeated Post posts = 1;
 }
 
 message CreatePostRequest {

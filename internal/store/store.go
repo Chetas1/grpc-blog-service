@@ -16,6 +16,7 @@ type BlogStore interface {
 	Get(id string) (*proto.Post, error)
 	Update(id string, title, content, author string, tags []string) (*proto.Post, error)
 	Delete(id string) error
+	ReadAll() ([]*proto.Post, error)
 }
 
 type blogStore struct {
@@ -72,4 +73,15 @@ func (s *blogStore) Delete(id string) error {
 	}
 	delete(s.posts, id)
 	return nil
+}
+
+func (s *blogStore) ReadAll() ([]*proto.Post, error) {
+	s.mu.RLock()
+	defer s.mu.RUnlock()
+
+	response := make([]*proto.Post, 0)
+	for _, post := range s.posts {
+		response = append(response, post)
+	}
+	return response, nil
 }

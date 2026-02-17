@@ -47,7 +47,6 @@ func runTest(ctx context.Context, client proto.BlogServiceClient) {
 	}
 	fmt.Printf("[UPDATE] Updated Title: %s\n", updatedPost.Title)
 
-	// Delete Post
 	deleteRes, err := client.DeletePost(ctx, &proto.DeletePostRequest{PostId: createdPost.PostId})
 	if err != nil {
 		log.Fatalf("Delete failed: %v", err)

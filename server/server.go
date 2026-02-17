@@ -63,3 +63,15 @@ func (s *server) DeletePost(ctx context.Context, req *proto.DeletePostRequest) (
 	log.Printf("[DELETE] Successfully deleted post ID: %s", req.PostId)
 	return &proto.DeletePostResponse{Success: true, Message: "Post deleted successfully"}, nil
 }
+
+func (s *server) ReadAll(ctx context.Context, req *proto.ReadAllRequest) (*proto.ReadAllResponse, error) {
+
+	posts, err := s.store.ReadAll()
+	if err != nil {
+		return nil, status.Errorf(codes.NotFound, "post not found")
+	}
+	log.Printf("[READALL] Successfully retrieved post ")
+	return &proto.ReadAllResponse{
+		Posts: posts,
+	}, err
+}
