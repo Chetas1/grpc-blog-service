@@ -17,6 +17,9 @@ type server struct {
 }
 
 func (s *server) CreatePost(ctx context.Context, req *proto.CreatePostRequest) (*proto.Post, error) {
+	if req == nil {
+		return nil, status.Error(codes.InvalidArgument, "request cannot be nil")
+	}
 
 	if req.Title == "" || req.Author == "" {
 		return nil, status.Error(codes.InvalidArgument, "title and author are required")
@@ -36,6 +39,9 @@ func (s *server) CreatePost(ctx context.Context, req *proto.CreatePostRequest) (
 }
 
 func (s *server) ReadPost(ctx context.Context, req *proto.ReadPostRequest) (*proto.Post, error) {
+	if req == nil {
+		return nil, status.Error(codes.InvalidArgument, "request cannot be nil")
+	}
 	post, err := s.store.Get(req.PostId)
 	if err != nil {
 		return nil, status.Errorf(codes.NotFound, "post not found: %s", req.PostId)
@@ -45,6 +51,9 @@ func (s *server) ReadPost(ctx context.Context, req *proto.ReadPostRequest) (*pro
 }
 
 func (s *server) UpdatePost(ctx context.Context, req *proto.UpdatePostRequest) (*proto.Post, error) {
+	if req == nil {
+		return nil, status.Error(codes.InvalidArgument, "request cannot be nil")
+	}
 	updatedPost, err := s.store.Update(req.PostId, req.Title, req.Content, req.Author, req.Tags)
 	if err != nil {
 		return nil, status.Errorf(codes.NotFound, "failed to update, post not found: %s", req.PostId)
@@ -55,6 +64,9 @@ func (s *server) UpdatePost(ctx context.Context, req *proto.UpdatePostRequest) (
 }
 
 func (s *server) DeletePost(ctx context.Context, req *proto.DeletePostRequest) (*proto.DeletePostResponse, error) {
+	if req == nil {
+		return nil, status.Error(codes.InvalidArgument, "request cannot be nil")
+	}
 	err := s.store.Delete(req.PostId)
 	if err != nil {
 		return &proto.DeletePostResponse{Success: false, Message: err.Error()}, status.Errorf(codes.NotFound, "post not found: %s", req.PostId)
@@ -65,13 +77,16 @@ func (s *server) DeletePost(ctx context.Context, req *proto.DeletePostRequest) (
 }
 
 func (s *server) ReadAll(ctx context.Context, req *proto.ReadAllRequest) (*proto.ReadAllResponse, error) {
+	if req == nil {
+		return nil, status.Error(codes.InvalidArgument, "request cannot be nil")
+	}
 
 	posts, err := s.store.ReadAll()
 	if err != nil {
 		return nil, status.Errorf(codes.NotFound, "post not found")
 	}
-	log.Printf("[READALL] Successfully retrieved post ")
+	log.Printf("[READALL] Successfully retrieved posts")
 	return &proto.ReadAllResponse{
 		Posts: posts,
-	}, err
+	}, nil
 }

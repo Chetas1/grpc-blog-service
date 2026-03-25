@@ -31,6 +31,9 @@ func NewBlogStore() BlogStore {
 }
 
 func (s *blogStore) Create(post *proto.Post) {
+	if post == nil {
+		return
+	}
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	s.posts[post.PostId] = post
