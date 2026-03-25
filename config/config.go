@@ -5,8 +5,9 @@ import (
 )
 
 type Config struct {
-	GrpcServer Server
-	GrpcClient Client
+	GrpcServer    Server
+	GatewayServer Server
+	GrpcClient    Client
 }
 
 type Server struct {

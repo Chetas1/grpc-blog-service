@@ -7,6 +7,7 @@
 package proto
 
 import (
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -482,7 +483,7 @@ var File_proto_blog_proto protoreflect.FileDescriptor
 
 const file_proto_blog_proto_rawDesc = "" +
 	"\n" +
-	"\x10proto/blog.proto\x12\x04blog\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc2\x01\n" +
+	"\x10proto/blog.proto\x12\x04blog\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1cgoogle/api/annotations.proto\"\xc2\x01\n" +
 	"\x04Post\x12\x17\n" +
 	"\apost_id\x18\x01 \x01(\tR\x06postId\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x18\n" +
@@ -512,19 +513,19 @@ const file_proto_blog_proto_rawDesc = "" +
 	"\apost_id\x18\x01 \x01(\tR\x06postId\"H\n" +
 	"\x12DeletePostResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
-	"\amessage\x18\x02 \x01(\tR\amessage2\x9b\x02\n" +
-	"\vBlogService\x121\n" +
+	"\amessage\x18\x02 \x01(\tR\amessage2\x9e\x03\n" +
+	"\vBlogService\x12G\n" +
 	"\n" +
 	"CreatePost\x12\x17.blog.CreatePostRequest\x1a\n" +
-	".blog.Post\x12-\n" +
+	".blog.Post\"\x14\x82\xd3\xe4\x93\x02\x0e:\x01*\"\t/v1/posts\x12J\n" +
 	"\bReadPost\x12\x15.blog.ReadPostRequest\x1a\n" +
-	".blog.Post\x121\n" +
+	".blog.Post\"\x1b\x82\xd3\xe4\x93\x02\x15\x12\x13/v1/posts/{post_id}\x12Q\n" +
 	"\n" +
 	"UpdatePost\x12\x17.blog.UpdatePostRequest\x1a\n" +
-	".blog.Post\x12?\n" +
+	".blog.Post\"\x1e\x82\xd3\xe4\x93\x02\x18:\x01*\x1a\x13/v1/posts/{post_id}\x12\\\n" +
 	"\n" +
-	"DeletePost\x12\x17.blog.DeletePostRequest\x1a\x18.blog.DeletePostResponse\x126\n" +
-	"\aReadAll\x12\x14.blog.ReadAllRequest\x1a\x15.blog.ReadAllResponseB,Z*github.com/Chetas1/grpc-blog-service/protob\x06proto3"
+	"DeletePost\x12\x17.blog.DeletePostRequest\x1a\x18.blog.DeletePostResponse\"\x1b\x82\xd3\xe4\x93\x02\x15*\x13/v1/posts/{post_id}\x12I\n" +
+	"\aReadAll\x12\x14.blog.ReadAllRequest\x1a\x15.blog.ReadAllResponse\"\x11\x82\xd3\xe4\x93\x02\v\x12\t/v1/postsB,Z*github.com/Chetas1/grpc-blog-service/protob\x06proto3"
 
 var (
 	file_proto_blog_proto_rawDescOnce sync.Once

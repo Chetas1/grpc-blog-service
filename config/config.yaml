@@ -3,5 +3,9 @@ GrpcServer:
   Port: 9090
   Protocol: tcp
 
+GatewayServer:
+  Host: localhost
+  Port: 8080
+
 GrpcClient: 
   ServerAddress: "localhost:9090"
