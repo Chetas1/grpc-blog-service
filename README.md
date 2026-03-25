@@ -5,6 +5,7 @@ A high-performance Blog Management API built with Go and gRPC. This service demo
 ### Key Features
 
 - **gRPC API** - Full CRUD implementation using Protobuf and modern gRPC-Go
+- **REST Gateway** - Expose gRPC methods as REST endpoints using `grpc-gateway`
 - **Concurrency** - Thread-safe store utilizing sync.RWMutex (optimized for multiple readers).
 - **Configuration** - Centralized management via Viper (YAML/Environment variable support).
 - **Quality Assurance** - Unit tests with Uber GoMock and filtered coverage reporting.
@@ -16,6 +17,7 @@ A high-performance Blog Management API built with Go and gRPC. This service demo
 |-----------|---------|---------|
 | Language | Go 1.24.5 | Primary runtime |
 | RPC | gRPC / Protobuf | API definition and serialization |
+| Gateway | grpc-gateway | gRPC to REST translation |
 | Config | Viper | Configuration management |
 | Mocking | Uber GoMock | Interface-based unit testing |
 | Tooling | Buf / Make | Code generation and automation |
@@ -85,7 +87,26 @@ make server
 go run ./server
 ```
 
-The server will start on `localhost:9090` by default.
+The server will start:
+- gRPC: `localhost:9090`
+- REST Gateway: `localhost:8080`
+
+### REST API Usage
+
+You can now use `curl` to interact with the service via REST:
+
+- **Create a Post:**
+  ```bash
+  curl -X POST http://localhost:8080/v1/posts -d '{"title": "My Post", "content": "Hello World", "author": "Chetas"}'
+  ```
+- **Read a Post:**
+  ```bash
+  curl http://localhost:8080/v1/posts/{post_id}
+  ```
+- **List All Posts:**
+  ```bash
+  curl http://localhost:8080/v1/posts
+  ```
 
 ### Run the Client (Test)
 
@@ -106,6 +127,10 @@ GrpcServer:
   Host: localhost
   Port: 9090
   Protocol: tcp
+
+GatewayServer:
+  Host: localhost
+  Port: 8080
 
 GrpcClient: 
   ServerAddress: "localhost:9090"
