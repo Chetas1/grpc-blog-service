@@ -1,3 +1,19 @@
 version: v2
+modules:
+  - path: proto
 deps:
   - buf.build/googleapis/googleapis
+lint:
+  use:
+    - STANDARD
+  except:
+    # Existing schema predates this lint config; tracked as follow-up.
+    # Fixing requires renaming the package to blog.v1 and introducing
+    # dedicated request/response types, which is a breaking change.
+    - PACKAGE_DIRECTORY_MATCH
+    - PACKAGE_VERSION_SUFFIX
+    - RPC_RESPONSE_STANDARD_NAME
+    - RPC_REQUEST_RESPONSE_UNIQUE
+breaking:
+  use:
+    - FILE

@@ -16,7 +16,7 @@ type server struct {
 	store store.BlogStore
 }
 
-func (s *server) CreatePost(ctx context.Context, req *proto.CreatePostRequest) (*proto.Post, error) {
+func (s *server) CreatePost(_ context.Context, req *proto.CreatePostRequest) (*proto.Post, error) {
 	if req == nil {
 		return nil, status.Error(codes.InvalidArgument, "request cannot be nil")
 	}
@@ -38,7 +38,7 @@ func (s *server) CreatePost(ctx context.Context, req *proto.CreatePostRequest) (
 	return post, nil
 }
 
-func (s *server) ReadPost(ctx context.Context, req *proto.ReadPostRequest) (*proto.Post, error) {
+func (s *server) ReadPost(_ context.Context, req *proto.ReadPostRequest) (*proto.Post, error) {
 	if req == nil {
 		return nil, status.Error(codes.InvalidArgument, "request cannot be nil")
 	}
@@ -50,7 +50,7 @@ func (s *server) ReadPost(ctx context.Context, req *proto.ReadPostRequest) (*pro
 	return post, nil
 }
 
-func (s *server) UpdatePost(ctx context.Context, req *proto.UpdatePostRequest) (*proto.Post, error) {
+func (s *server) UpdatePost(_ context.Context, req *proto.UpdatePostRequest) (*proto.Post, error) {
 	if req == nil {
 		return nil, status.Error(codes.InvalidArgument, "request cannot be nil")
 	}
@@ -63,12 +63,11 @@ func (s *server) UpdatePost(ctx context.Context, req *proto.UpdatePostRequest) (
 	return updatedPost, nil
 }
 
-func (s *server) DeletePost(ctx context.Context, req *proto.DeletePostRequest) (*proto.DeletePostResponse, error) {
+func (s *server) DeletePost(_ context.Context, req *proto.DeletePostRequest) (*proto.DeletePostResponse, error) {
 	if req == nil {
 		return nil, status.Error(codes.InvalidArgument, "request cannot be nil")
 	}
-	err := s.store.Delete(req.PostId)
-	if err != nil {
+	if err := s.store.Delete(req.PostId); err != nil {
 		return &proto.DeletePostResponse{Success: false, Message: err.Error()}, status.Errorf(codes.NotFound, "post not found: %s", req.PostId)
 	}
 
@@ -76,7 +75,7 @@ func (s *server) DeletePost(ctx context.Context, req *proto.DeletePostRequest) (
 	return &proto.DeletePostResponse{Success: true, Message: "Post deleted successfully"}, nil
 }
 
-func (s *server) ReadAll(ctx context.Context, req *proto.ReadAllRequest) (*proto.ReadAllResponse, error) {
+func (s *server) ReadAll(_ context.Context, req *proto.ReadAllRequest) (*proto.ReadAllResponse, error) {
 	if req == nil {
 		return nil, status.Error(codes.InvalidArgument, "request cannot be nil")
 	}

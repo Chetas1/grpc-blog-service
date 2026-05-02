@@ -2,8 +2,8 @@ syntax = "proto3";
 
 package blog;
 
-import "google/protobuf/timestamp.proto";
 import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
 
 option go_package = "github.com/Chetas1/grpc-blog-service/proto";
 
@@ -15,9 +15,7 @@ service BlogService {
     };
   }
   rpc ReadPost(ReadPostRequest) returns (Post) {
-    option (google.api.http) = {
-      get: "/v1/posts/{post_id}"
-    };
+    option (google.api.http) = {get: "/v1/posts/{post_id}"};
   }
   rpc UpdatePost(UpdatePostRequest) returns (Post) {
     option (google.api.http) = {
@@ -26,14 +24,10 @@ service BlogService {
     };
   }
   rpc DeletePost(DeletePostRequest) returns (DeletePostResponse) {
-    option (google.api.http) = {
-      delete: "/v1/posts/{post_id}"
-    };
+    option (google.api.http) = {delete: "/v1/posts/{post_id}"};
   }
   rpc ReadAll(ReadAllRequest) returns (ReadAllResponse) {
-    option (google.api.http) = {
-      get: "/v1/posts"
-    };
+    option (google.api.http) = {get: "/v1/posts"};
   }
 }
 
