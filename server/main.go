@@ -102,23 +102,27 @@ func main() {
 	ctx, cancel := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM)
 	defer cancel()
 
-	errCh := make(chan error, 2)
+	const numServers = 2
+	errCh := make(chan error, numServers)
 
 	go func() { errCh <- runGRPCServer(ctx, &cfg) }()
 	go func() { errCh <- runGatewayServer(ctx, &cfg) }()
 
+	remaining := numServers
 	select {
 	case <-ctx.Done():
 		log.Printf("shutdown signal received")
 	case err := <-errCh:
+		remaining--
 		if err != nil {
 			log.Printf("server error: %v", err)
 		}
 		cancel()
 	}
 
-	// Drain the second goroutine so we exit cleanly.
-	for i := 0; i < 1; i++ {
+	// Drain remaining goroutines so we exit only after both servers finish
+	// their graceful shutdown.
+	for i := 0; i < remaining; i++ {
 		if err := <-errCh; err != nil && !errors.Is(err, context.Canceled) {
 			log.Printf("server error during shutdown: %v", err)
 		}
