@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/Chetas1/grpc-blog-service/proto"
+	"github.com/Chetas-Patil/grpc-blog-service/proto"
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
 

@@ -2,8 +2,8 @@
 
 > A reference Go gRPC service for a Blog domain — Buf, gRPC-Gateway, Viper, mock-driven testing, and a thread-safe in-memory store. Built as a template for production CRUD services.
 
-[![CI](https://github.com/Chetas1/grpc-blog-service/actions/workflows/ci.yml/badge.svg)](https://github.com/Chetas1/grpc-blog-service/actions/workflows/ci.yml)
-[![Security](https://github.com/Chetas1/grpc-blog-service/actions/workflows/security.yml/badge.svg)](https://github.com/Chetas1/grpc-blog-service/actions/workflows/security.yml)
+[![CI](https://github.com/Chetas-Patil/grpc-blog-service/actions/workflows/ci.yml/badge.svg)](https://github.com/Chetas-Patil/grpc-blog-service/actions/workflows/ci.yml)
+[![Security](https://github.com/Chetas-Patil/grpc-blog-service/actions/workflows/security.yml/badge.svg)](https://github.com/Chetas-Patil/grpc-blog-service/actions/workflows/security.yml)
 [![Go Version](https://img.shields.io/badge/Go-1.24+-00ADD8?logo=go&logoColor=white)](https://go.dev/dl/)
 [![gRPC](https://img.shields.io/badge/gRPC-Protobuf-00B5AD?logo=google&logoColor=white)](https://grpc.io)
 [![License](https://img.shields.io/badge/License-See%20LICENSE-informational)](LICENSE)

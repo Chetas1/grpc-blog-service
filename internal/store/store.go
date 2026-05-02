@@ -10,7 +10,7 @@ import (
 	"errors"
 	"sync"
 
-	"github.com/Chetas1/grpc-blog-service/proto"
+	"github.com/Chetas-Patil/grpc-blog-service/proto"
 )
 
 // ErrPostNotFound is returned by Get, Update, and Delete when the requested

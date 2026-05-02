@@ -4,8 +4,8 @@ import (
 	"context"
 	"log"
 
-	"github.com/Chetas1/grpc-blog-service/internal/store"
-	"github.com/Chetas1/grpc-blog-service/proto"
+	"github.com/Chetas-Patil/grpc-blog-service/internal/store"
+	"github.com/Chetas-Patil/grpc-blog-service/proto"
 	"github.com/google/uuid"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"

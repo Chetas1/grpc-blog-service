@@ -7,8 +7,8 @@ import (
 	"log"
 	"time"
 
-	"github.com/Chetas1/grpc-blog-service/config"
-	"github.com/Chetas1/grpc-blog-service/proto"
+	"github.com/Chetas-Patil/grpc-blog-service/config"
+	"github.com/Chetas-Patil/grpc-blog-service/proto"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )

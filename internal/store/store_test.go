@@ -4,7 +4,7 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/Chetas1/grpc-blog-service/proto"
+	"github.com/Chetas-Patil/grpc-blog-service/proto"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"google.golang.org/protobuf/types/known/timestamppb"

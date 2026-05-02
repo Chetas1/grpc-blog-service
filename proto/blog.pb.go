@@ -525,7 +525,7 @@ const file_proto_blog_proto_rawDesc = "" +
 	".blog.Post\"\x1e\x82\xd3\xe4\x93\x02\x18:\x01*\x1a\x13/v1/posts/{post_id}\x12\\\n" +
 	"\n" +
 	"DeletePost\x12\x17.blog.DeletePostRequest\x1a\x18.blog.DeletePostResponse\"\x1b\x82\xd3\xe4\x93\x02\x15*\x13/v1/posts/{post_id}\x12I\n" +
-	"\aReadAll\x12\x14.blog.ReadAllRequest\x1a\x15.blog.ReadAllResponse\"\x11\x82\xd3\xe4\x93\x02\v\x12\t/v1/postsB,Z*github.com/Chetas1/grpc-blog-service/protob\x06proto3"
+	"\aReadAll\x12\x14.blog.ReadAllRequest\x1a\x15.blog.ReadAllResponse\"\x11\x82\xd3\xe4\x93\x02\v\x12\t/v1/postsB1Z/github.com/Chetas-Patil/grpc-blog-service/protob\x06proto3"
 
 var (
 	file_proto_blog_proto_rawDescOnce sync.Once

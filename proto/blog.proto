@@ -5,7 +5,7 @@ package blog;
 import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/Chetas1/grpc-blog-service/proto";
+option go_package = "github.com/Chetas-Patil/grpc-blog-service/proto";
 
 service BlogService {
   rpc CreatePost(CreatePostRequest) returns (Post) {

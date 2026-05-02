@@ -1,4 +1,4 @@
-module github.com/Chetas1/grpc-blog-service
+module github.com/Chetas-Patil/grpc-blog-service
 
 go 1.24.5
 
