@@ -270,7 +270,7 @@ func TestConcurrentUpdateAndRead(t *testing.T) {
 	// Half goroutines will update
 	for i := 0; i < numGoroutines/2; i++ {
 		wg.Add(1)
-		go func(idx int) {
+		go func(_ int) {
 			defer wg.Done()
 			_, err := store.Update("concurrent-update", "Updated", "New content", "New author", []string{"new"})
 			require.NoError(t, err)

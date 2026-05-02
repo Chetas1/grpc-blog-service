@@ -1,3 +1,5 @@
+// Command client is a small smoke-test gRPC client that walks through the
+// CRUD endpoints exposed by the BlogService server.
 package main
 
 import (
@@ -21,7 +23,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 	}
-	defer conn.Close()
+	defer func() { _ = conn.Close() }()
 
 	client := proto.NewBlogServiceClient(conn)
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
